@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<stdio.h>
 #include<locale.h>
 #include<math.h>
@@ -6,23 +6,23 @@
 #include "Header.h"
 
 
-/* Заполнение целочисленного массива */
+/* Р—Р°РїРѕР»РЅРµРЅРёРµ С†РµР»РѕС‡РёСЃР»РµРЅРЅРѕРіРѕ РјР°СЃСЃРёРІР° */
 void fillArrayInteger(int * mas, int *len, int *min, int *max)
 {
 	for (int i = 0; i < *len; i++)
 		*(mas+i) = rand() * (*max - *min) / RAND_MAX + *min;
 }
 
-/* Вывод на печать целочисленного массива*/
+/* Р’С‹РІРѕРґ РЅР° РїРµС‡Р°С‚СЊ С†РµР»РѕС‡РёСЃР»РµРЅРЅРѕРіРѕ РјР°СЃСЃРёРІР°*/
 void printArray(int *mas, int *len)
 {
-	printf("Исходный массив:\n");
+	printf("РСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ:\n");
 	for (int i = 0; i < *len; i++)
 		printf("A[%d]=%d; ", i, *(mas+i));
 	printf("\n");
 }
 
-/* Проверка на четность/нечетность */
+/* РџСЂРѕРІРµСЂРєР° РЅР° С‡РµС‚РЅРѕСЃС‚СЊ/РЅРµС‡РµС‚РЅРѕСЃС‚СЊ */
 bool evennessCheck(int *number)
 {
 	bool flag;
@@ -32,7 +32,7 @@ bool evennessCheck(int *number)
 	return flag;
 }
 
-/*Определение простого числа*/
+/*РћРїСЂРµРґРµР»РµРЅРёРµ РїСЂРѕСЃС‚РѕРіРѕ С‡РёСЃР»Р°*/
 bool primeNumber(int *number)
 {
 	bool flag = 1;
@@ -48,7 +48,7 @@ bool primeNumber(int *number)
 	return flag;
 }
 
-/* Проверка числа на совершенность */
+/* РџСЂРѕРІРµСЂРєР° С‡РёСЃР»Р° РЅР° СЃРѕРІРµСЂС€РµРЅРЅРѕСЃС‚СЊ */
 bool perfectNumber(int number)
 {
 	int sum = 1;
@@ -65,7 +65,7 @@ bool perfectNumber(int number)
 		return flag;
 }
 
-/* Максимальный элемент массива */
+/* РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° */
 void maxElement(int *mas, int *len)
 {
 	int max = *mas, index;
@@ -77,10 +77,10 @@ void maxElement(int *mas, int *len)
 			index = i;
 		}
 	}	
-	printf("Максимальный элемент: A[%d]=%d; ", index, max);
+	printf("РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚: A[%d]=%d; ", index, max);
 }
 
-/* Перевод цифр числа в массив */
+/* РџРµСЂРµРІРѕРґ С†РёС„СЂ С‡РёСЃР»Р° РІ РјР°СЃСЃРёРІ */
 void getNumber(int *arr1, int len, int number)
 {
 	if (len >= 0 && number>0)
@@ -92,7 +92,7 @@ void getNumber(int *arr1, int len, int number)
 
 }
 
-/* Нахождение счастливого числа */
+/* РќР°С…РѕР¶РґРµРЅРёРµ СЃС‡Р°СЃС‚Р»РёРІРѕРіРѕ С‡РёСЃР»Р° */
 bool luckyNumber(int number)
 {
 	int arr[6], len = 6, sum1=0, sum2=0;
