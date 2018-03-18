@@ -26,7 +26,17 @@ void main()
 						/*1. Даны два массива, упорядоченных по возрастанию: А[n] и B[m].
 						Сформируйте массив C[n+m], состоящий из элементов массивов А и В, 
 						упорядоченный по возрастанию (Массив С не должен сортироваться).*/
-	
+						int A[6], B[10], C[16], lenA=6, lenB=10, lenC=16, min=10, max=50;
+
+						fillArrayInteger(A, &lenA, &min, &max);
+						fillArrayInteger(B, &lenB, &min, &max);
+						printArray(A, &lenA);
+						printArray(B, &lenB);
+						BubleSort(A, &lenA);
+						BubleSort(B, &lenB);
+
+						thirdArraySort(A, B, C, lenA, lenB, lenC);
+						printArray(C, &lenC);
 
 						printf("\n");
 						system("pause");

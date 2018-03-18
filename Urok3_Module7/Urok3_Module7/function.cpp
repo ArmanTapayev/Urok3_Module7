@@ -7,19 +7,94 @@
 
 
 /* Заполнение целочисленного массива */
-void fillArrayInteger(int * mas, int *len, int *min, int *max)
+void fillArrayInteger(int *arr, int *len, int *min, int *max)
 {
 	for (int i = 0; i < *len; i++)
-		*(mas+i) = rand() * (*max - *min) / RAND_MAX + *min;
+		*(arr +i) = rand() * (*max - *min) / RAND_MAX + *min;
 }
 
 /* Вывод на печать целочисленного массива*/
-void printArray(int *mas, int *len)
+void printArray(int *arr, int *len)
 {
 	printf("Исходный массив:\n");
 	for (int i = 0; i < *len; i++)
-		printf("A[%d]=%d; ", i, *(mas+i));
+		printf("A[%d]=%d; ", i, *(arr + i));
 	printf("\n");
+}
+
+/*Пузырьковая сортировка*/
+void BubleSort(int *arr, int *len)
+{
+	printf("\nМассив после сортировки:\n");
+
+	for (int i = 0; i < *len; i++)
+	{
+		for (int j = (*len - 1); j > i; j--) // для всех элементов после i-ого
+		{
+			if (*(arr + j-1) > *(arr + j)) // если текущий элемент меньше предыдущего
+			{
+				int temp = *(arr + j - 1); // меняем их местами
+				*(arr + j - 1) = *(arr + j);
+				*(arr + j) = temp;
+			}
+		}
+
+		printf("A[%d]=%d ", i, *(arr + i ));
+	}
+}
+
+// Линейный поиск
+void LineSearch(int *arr, int *len, int *key)
+{
+	BubleSort(arr, len);
+
+	for (int i = 0; i < *len; i++) // просматриваем все элементы в цикле
+	{
+		if (*(arr + i) == *key)      // если находим элемент со значением key,
+		{
+			printf("\nЭлемент A[%d]=%d найдем за %d проходов.\n", i, *(arr + i), i);
+			break;
+		}
+
+	}
+
+}
+
+//Бинарный поиск
+void BinarySearch(int *arr, int *len, int *key)
+{
+	BubleSort(arr, len);
+	int left = 0; // задаем левую и правую границы поиска
+	int right = *len - 1;
+	int search = -1; // найденный индекс элемента равен -1 (элемент не найден)
+	int count = 0;
+
+	while (left <= right) // пока левая граница не "перескочит" правую
+	{
+		count++;
+		int mid = (left + right) / 2; // ищем середину отрезка
+
+									  // если ключевое поле равно искомому
+									  // мы нашли требуемый элемент, выходим из цикла
+		if (*key == *(arr + mid))
+		{
+			search = mid;
+			break;
+		}
+
+
+		if (*key < *(arr + mid))     // если искомое ключевое поле меньше найденной середины
+			right = mid - 1;  // смещаем правую границу, продолжим поиск в левой части
+		else
+			left = mid + 1;   // смещаем левую границу, продолжим поиск в правой части
+	}
+
+	if (search == -1)     // если индекс элемента по-прежнему -1, элемент не найден
+		printf("\nЭлемент не найден!");
+
+	else          // иначе выводим элемент, его ключ и значение
+		printf("\nЭлемент A[%d]=%d найдем за %d проходов.\n", search, *(arr+search), count);
+
 }
 
 /* Проверка на четность/нечетность */
@@ -110,4 +185,41 @@ bool luckyNumber(int number)
 			flag = 1;
 
 	return flag;
+}
+
+/* Задание 1 */
+void thirdArraySort(int *arr1, int *arr2, int *arr3, int len1, int len2, int len3)
+{	
+	int i = 0, j = 0, k = 0;
+	/*for (int k = 0; k < len3; k++)
+	{
+		for ( int i = 0; i < len1; i++)
+		{
+			for (int j = 0; j < len2; j++)
+			{
+				if (arr2[j] < arr1[i])
+					arr3[k] = arr2[j];
+				else if(arr2[j] > arr1[i])
+					arr3[k] = arr1[i];
+			}
+		}
+
+	}*/
+	while ((i < len1 || j < len2) && k<len3+1)
+	{
+		if (*(arr1+i)<=*(arr2+j)) //(i < len1 || j < len2)&&
+		{
+			*(arr3 + k) = *(arr1 + i);
+			i++;
+			k++;
+		}
+		else if (*(arr1 + i)>=*(arr2 + j))
+		{
+			*(arr3 + k) = *(arr2 + j);
+			j++;
+			k++;
+		}
+
+	}
+	
 }
