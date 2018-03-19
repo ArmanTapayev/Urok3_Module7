@@ -1,4 +1,4 @@
-﻿#include<iostream>
+#include<iostream>
 #include<stdio.h>
 #include<locale.h>
 #include<math.h>
@@ -39,7 +39,7 @@ void BubleSort(int *arr, int *len)
 			}
 		}
 
-		printf("A[%d]=%d ", i, *(arr + i ));
+		printf("A[%d]=%d; ", i, *(arr + i ));
 	}
 }
 
@@ -191,35 +191,37 @@ bool luckyNumber(int number)
 void thirdArraySort(int *arr1, int *arr2, int *arr3, int len1, int len2, int len3)
 {	
 	int i = 0, j = 0, k = 0;
-	/*for (int k = 0; k < len3; k++)
-	{
-		for ( int i = 0; i < len1; i++)
+	
+		while ((i < len1 && j < len2)) // при этом не все элементы попадут в третий массив
 		{
-			for (int j = 0; j < len2; j++)
+
+			if (*(arr1+i) <= *(arr2+j))
 			{
-				if (arr2[j] < arr1[i])
-					arr3[k] = arr2[j];
-				else if(arr2[j] > arr1[i])
-					arr3[k] = arr1[i];
+				*(arr3+k) = *(arr1+i);
+				i++;
+				k++;
 			}
+			else if (*(arr1+i) >= *(arr2+j))
+			{
+				*(arr3 + k) = *(arr2+j);
+				j++;
+				k++;
+			}
+
 		}
 
-	}*/
-	while ((i < len1 || j < len2) && k<len3+1)
-	{
-		if (*(arr1+i)<=*(arr2+j)) //(i < len1 || j < len2)&&
+		while (i < len1)					// дописываем элементы из массива 1
 		{
 			*(arr3 + k) = *(arr1 + i);
 			i++;
-			k++;
+			k++;			
 		}
-		else if (*(arr1 + i)>=*(arr2 + j))
+
+		while (j < len2)					// дописываем элементы из массива 2
 		{
 			*(arr3 + k) = *(arr2 + j);
 			j++;
 			k++;
 		}
 
-	}
-	
 }
