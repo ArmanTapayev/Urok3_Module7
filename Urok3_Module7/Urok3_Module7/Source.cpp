@@ -30,11 +30,14 @@ void main()
 
 						fillArrayInteger(A, &lenA, &min, &max);
 						fillArrayInteger(B, &lenB, &min, &max);
+						
 						printArray(A, &lenA);
 						printArray(B, &lenB);
+						
 						BubleSort(A, &lenA);
 						BubleSort(B, &lenB);
-
+						
+						printf("\n");
 						thirdArraySort(A, B, C, lenA, lenB, lenC);
 						printArray(C, &lenC);
 
