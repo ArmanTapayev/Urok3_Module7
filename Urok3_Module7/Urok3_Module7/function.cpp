@@ -16,16 +16,16 @@ void fillArrayInteger(int *arr, int *len, int *min, int *max)
 /* Вывод на печать целочисленного массива*/
 void printArray(int *arr, int *len)
 {
-	printf("Исходный массив:\n");
+	//printf("Исходный массив:\n");
 	for (int i = 0; i < *len; i++)
-		printf("A[%d]=%d; ", i, *(arr + i));
+		printf("%d; ", *(arr + i));
 	printf("\n");
 }
 
 /*Пузырьковая сортировка*/
 void BubleSort(int *arr, int *len)
 {
-	printf("\nМассив после сортировки:\n");
+	//printf("\nМассив после сортировки:\n");
 
 	for (int i = 0; i < *len; i++)
 	{
@@ -39,7 +39,7 @@ void BubleSort(int *arr, int *len)
 			}
 		}
 
-		printf("A[%d]=%d; ", i, *(arr + i ));
+		printf("%d; ", *(arr + i ));
 	}
 }
 
@@ -52,7 +52,7 @@ void LineSearch(int *arr, int *len, int *key)
 	{
 		if (*(arr + i) == *key)      // если находим элемент со значением key,
 		{
-			printf("\nЭлемент A[%d]=%d найдем за %d проходов.\n", i, *(arr + i), i);
+			printf("\nЭлемент arr[%d]=%d найдем за %d проходов.\n", i, *(arr + i), i);
 			break;
 		}
 
@@ -93,7 +93,7 @@ void BinarySearch(int *arr, int *len, int *key)
 		printf("\nЭлемент не найден!");
 
 	else          // иначе выводим элемент, его ключ и значение
-		printf("\nЭлемент A[%d]=%d найдем за %d проходов.\n", search, *(arr+search), count);
+		printf("\nЭлемент arr[%d]=%d найдем за %d проходов.\n", search, *(arr+search), count);
 
 }
 
@@ -152,7 +152,7 @@ void maxElement(int *mas, int *len)
 			index = i;
 		}
 	}	
-	printf("Максимальный элемент: A[%d]=%d; ", index, max);
+	printf("Максимальный элемент: max[%d]=%d; ", index, max);
 }
 
 /* Перевод цифр числа в массив */
@@ -187,7 +187,11 @@ bool luckyNumber(int number)
 	return flag;
 }
 
-/* Задание 1 */
+
+/* Задание 1. Даны два массива, упорядоченных по возрастанию: А[n] и B[m].
+Сформируйте массив C[n+m], состоящий из элементов массивов А и В,
+упорядоченный по возрастанию (Массив С не должен сортироваться).*/
+
 void thirdArraySort(int *arr1, int *arr2, int *arr3, int len1, int len2, int len3)
 {	
 	int i = 0, j = 0, k = 0;
@@ -224,4 +228,183 @@ void thirdArraySort(int *arr1, int *arr2, int *arr3, int len1, int len2, int len
 			k++;
 		}
 
+}
+
+/* Задание 2. Даны два массива : А[n] и B[m]. Необходимо создать третий массив,
+в котором нужно собрать общие элементы двух массивов.*/
+
+void thirdArrayEvennes(int *arr1, int *arr2, int *arr3, int len1, int len2, int len3)
+{
+	int k = 0;
+	for (int i = 0; i < len1; i++)
+	{
+		for (int j = 0; j < len2; j++)
+		{
+			if (*(arr1 + i) == *(arr2 + j))
+			{
+				*(arr3 + k) = *(arr1 + i);
+				k++;
+			}
+		}
+	}
+}
+
+
+/* Задание 3. Даны два массива : А[n] и B[m]. Необходимо создать третий массив,
+в котором нужно собрать элементы массива A, которые не включаются в B.*/
+
+void thirdArrayArr1notArr2(int *arr1, int *arr2, int *arr3, int len1, int len2, int len3)
+{
+	int k = 0, flag = 1;
+	
+		for (int i = 0; i < len1; i++)
+		{	
+			
+			for (int j = 0; j < len2; j++)
+			{
+				if (*(arr1 + i) == *(arr2 + j))
+				
+					flag = 0;									
+			}	
+
+			if (flag)
+			{
+				*(arr3 + k) = *(arr1 + i);
+				k++;					
+			}
+
+			flag = 1;		
+		}
+
+}
+
+int thirdArrayArr1notArr2Int(int *arr1, int *arr2, int *arr3, int len1, int len2, int len3)
+{
+	int k = 0, flag = 1;
+
+	for (int i = 0; i < len1; i++)
+	{
+
+		for (int j = 0; j < len2; j++)
+		{
+			if (*(arr1 + i) == *(arr2 + j))
+
+				flag = 0;
+		}
+
+		if (flag)
+		{
+			*(arr3 + k) = *(arr1 + i);
+			k++;
+		}
+
+		flag = 1;
+	}
+
+	return *arr3;
+}
+
+/* Задание 4. Даны два массива : А[n] и B[m]. Необходимо создать третий массив,
+в котором нужно собрать элементы массива B, которые не включаются в A.*/
+
+void thirdArrayArr2notArr1(int *arr1, int *arr2, int *arr3, int len1, int len2, int len3)
+{
+	int k = 0, flag = 1;
+
+	for (int j = 0; j < len2; j++)
+	{
+
+		for (int i = 0; i < len1; i++)
+		{
+			if (*(arr1 + i) == *(arr2 + j))
+
+				flag = 0;
+		}
+		if (flag)
+		{
+			*(arr3 + k) = *(arr2 + j);
+			k++;
+		}
+
+		flag = 1;
+	}
+
+}
+
+
+/* Задание 5. Даны два массива : А[n] и B[m]. Необходимо создать третий массив,
+в котором нужно собрать элементы массивов A и B, которые не являются общими для них.*/
+
+void thirdArrayTotal(int *arr1, int *arr2, int *arr3, int *arr4, int *arr5, int *arr6, int len1, int len2, int len3)
+{
+	int C[16] = {};
+
+	thirdArrayArr1notArr2(arr1, arr2, arr3, len1, len2, len3);
+
+	printf("\n");
+
+	printf("\nЭлементы массива А, которые не включаются в массив B:\n");
+
+		for (int i = 0; i < len3; i++)
+		{
+			if (*(arr3 + i) != 0)
+			{
+				*(C+i) = *(arr3 + i);
+				printf("%d; ", *(C + i));
+			}
+				
+		}
+
+	int D[16] = {};
+
+	thirdArrayArr2notArr1(arr4, arr5, arr6, len1, len2, len3);
+
+	printf("\n");
+
+	printf("\nЭлементы массива B, которые не включаются в массив A:\n");
+
+		for (int i = 0; i < len3; i++)
+		{
+			if (*(arr6 + i) != 0)
+			{
+				*(D + i) = *(arr6 + i);
+				printf("%d; ", *(D + i));
+			}
+		}
+
+		printf("\n");
+
+		printf("\nЭлементы массивов A и B, которые не являются общими для них:\n");
+		
+		int F[32] = {};
+		thirdArraySort(C, D, F, len3, len3, 32);
+		for (int i = 0; i < 32; i++)
+		{
+			if (*(F + i) != 0)
+				printf("%d; ", *(F + i));
+		}
+		printf("\n");
+}
+
+/*5. **Написать функцию, которая возвращает истину, если переданный параметр является
+алфавитно-цифровым и ложь, если не является.*/
+
+short analogDigitalNumber(short x)
+{
+	if ((x >= 48 && x <= 57) || (x >= 65 && x <= 90) || (x >= 97 && x <= 122) || (x >= 192 && x <= 255))
+		return 1;
+	else
+		return 0;
+}
+
+/* Напишите функцию, которая принимает три массива целых чисел.
+Выполнить поэлементное сложение элементов первых двух массивов, и результат занести в третий массив.*/
+
+void sumArray(int *arr1, int *arr2, int *arr3, int len)
+{
+	for (int i = 0; i < len; i++)
+	{
+		*(arr3 + i) = *(arr1 + i) + *(arr2 + i);
+		printf("%d; ", *(arr3 + i));
+	}
 }
